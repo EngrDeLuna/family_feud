@@ -22,7 +22,7 @@
     padding-bottom: 8vh;
   }
 
-  /* Search input only (button removed) */
+  /* Search input only */
   .search-container {
     position: absolute;
     top: 12vh;
@@ -97,7 +97,6 @@
 <body>
 
 <div class="full-bg">
-
   <!-- Search input only -->
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Type your answer here">
@@ -141,7 +140,6 @@
   const bgMusic = new Audio("bg-music.mp3");
   bgMusic.loop = true;
   bgMusic.volume = 0.3;
-
   window.addEventListener("load", () => {
     bgMusic.play().catch(e => {
       bgMusic.muted = true;
@@ -151,77 +149,28 @@
     });
   });
 
- // Answers + 10 variants each
-const answers = [
-  { 
-    text: "Drink coffee", 
-    revealed:false, 
-    placeholderId:"ph2", 
-    score:45, 
-    variants:[
-      "drink coffee","have coffee","coffee","make coffee","brewing coffee",
-      "morning coffee","sip coffee","grab coffee","hot coffee","cup of coffee"
-    ] 
-  },
+  // Answers + 10 variants each
+  const answers = [
+    { text: "Drink coffee", score:45, variants:["drink coffee","have coffee","coffee","make coffee","brewing coffee","morning coffee","sip coffee","grab coffee","hot coffee","cup of coffee"], revealed:false },
+    { text: "Watch TV", score:30, variants:["watch tv","watch television","tv","watching tv","movie marathon","watch series","watch shows","netflix","binge watch","watch movies"], revealed:false },
+    { text: "Stay at home", score:25, variants:["stay at home","stay home","stay indoors","stay inside","home only","just at home","remain at home","stay in the house","be at home","stuck at home"], revealed:false },
+    { text: "Play games", score:18, variants:["play games","play game","gaming","video games","online games","mobile games","console games","pc games","play online","game time"], revealed:false },
+    { text: "Go online", score:12, variants:["go online","online","surf internet","browse internet","internet surfing","scroll online","internet","use phone online","browse web","go on social media"], revealed:false },
+    { text: "Read books", score:5, variants:["read books","reading books","books","read a book","book reading","read novel","read story","book time","reading time","read literature"], revealed:false }
+  ];
 
-  { 
-    text: "Watch TV", 
-    revealed:false, 
-    placeholderId:"ph4", 
-    score:30, 
-    variants:[
-      "watch tv","watch television","tv","watching tv","movie marathon",
-      "watch series","watch shows","netflix","binge watch","watch movies"
-    ] 
-  },
+  // Sort answers by score descending and assign placeholders
+  const placeholderIds = ["ph1","ph2","ph3","ph4","ph5","ph6"];
+  const smallIds = ["ph1s","ph2s","ph3s","ph4s","ph5s","ph6s"];
+  const sortedAnswers = answers.slice().sort((a,b)=>b.score-a.score);
+  sortedAnswers.forEach((ans, i) => {
+    ans.placeholderId = placeholderIds[i];
+    ans.smallId = smallIds[i];
+    document.getElementById(ans.placeholderId).textContent = ""; // blank initially
+    document.getElementById(ans.smallId).textContent = "";
+  });
 
-  { 
-    text: "Stay at home", 
-    revealed:false, 
-    placeholderId:"ph1", 
-    score:25, 
-    variants:[
-      "stay at home","stay home","stay indoors","stay inside","home only",
-      "just at home","remain at home","stay in the house","be at home","stuck at home"
-    ] 
-  },
-
-  { 
-    text: "Play games", 
-    revealed:false, 
-    placeholderId:"ph5", 
-    score:18, 
-    variants:[
-      "play games","play game","gaming","video games","online games",
-      "mobile games","console games","pc games","play online","game time"
-    ] 
-  },
-
-  { 
-    text: "Go online", 
-    revealed:false, 
-    placeholderId:"ph6", 
-    score:12, 
-    variants:[
-      "go online","online","surf internet","browse internet","internet surfing",
-      "scroll online","internet","use phone online","browse web","go on social media"
-    ] 
-  },
-
-  { 
-    text: "Read books", 
-    revealed:false, 
-    placeholderId:"ph3", 
-    score:5, 
-    variants:[
-      "read books","reading books","books","read a book","book reading",
-      "read novel","read story","book time","reading time","read literature"
-    ] 
-  }
-];
-
-
-  // Wrong image
+  // Wrong image & sounds
   const wrongImg = document.createElement("img");
   wrongImg.src = "wrong.png";
   wrongImg.style.position = "absolute";
@@ -237,35 +186,32 @@ const answers = [
   const wrongSound = new Audio("wrong.mp3");
   const correctSound = new Audio("correct.mp3");
 
-  function revealAnswer(input) {
+  // Reveal answer function
+  function revealAnswer(input){
     const userInput = input.value.trim().toLowerCase();
     let found = false;
 
-    answers.forEach(answer => {
-      if (!answer.revealed && answer.variants.some(v => v === userInput)) {
-        answer.revealed = true;
-        document.getElementById(answer.placeholderId).textContent = answer.text;
-        document.getElementById(answer.placeholderId + "s").textContent = answer.score;
-
-        correctSound.currentTime = 0;
-        correctSound.play();
-        found = true;
+    sortedAnswers.forEach(ans=>{
+      if(!ans.revealed && ans.variants.some(v=>v===userInput)){
+        ans.revealed = true;
+        document.getElementById(ans.placeholderId).textContent = ans.text;
+        document.getElementById(ans.smallId).textContent = ans.score;
+        correctSound.currentTime=0; correctSound.play();
+        found=true;
       }
     });
 
-    if (!found) {
-      wrongImg.style.display = "block";
-      wrongSound.currentTime = 0;
-      wrongSound.play();
-      setTimeout(() => wrongImg.style.display = "none", 1500);
+    if(!found){
+      wrongImg.style.display="block";
+      wrongSound.currentTime=0; wrongSound.play();
+      setTimeout(()=>wrongImg.style.display="none",1500);
     }
-
-    input.value = "";
+    input.value="";
   }
 
   // Enter key triggers reveal
-  document.getElementById("searchInput").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
+  document.getElementById("searchInput").addEventListener("keypress",(e)=>{
+    if(e.key==="Enter"){
       e.preventDefault();
       revealAnswer(e.target);
     }
