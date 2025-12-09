@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1st Question</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; width:100%; font-family:'Arial', sans-serif; }
+
+  .full-bg {
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    padding-bottom: 8vh;
+  }
+
+  /* Search input only (button removed) */
+  .search-container {
+    position: absolute;
+    top: 12vh;
+    left: 73%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 20;
+  }
+
+  #searchInput {
+    padding: 0.8vh 1vw;
+    font-size: 1vw;
+    width: 20vw;
+    border: 0.2vw solid black;
+    border-radius: 2vw;
+  }
+
+  .placeholders-container { 
+    display:flex; 
+    gap:4vw; 
+    width:98%; 
+    position:relative; 
+    margin-bottom:17vh;
+    justify-content:center;
+  }
+
+  .column { 
+    display:flex; 
+    flex-direction:column; 
+    gap:5vh; 
+    position:relative;
+  }
+
+  .placeholder, .small-placeholder {
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    font-weight:bold;
+    color: black;
+    border:0.4vw solid #ffde59; 
+    border-radius:50vw; 
+    cursor:pointer; 
+    background: #ff6d00;
+  }
+
+  .placeholder { 
+    width: 25vw;
+    height: 7vh;
+    font-size: 1.5vw;
+  }
+
+  .small-placeholder { 
+    width: 5vw;
+    height: 7vh;
+    font-size: 1.5vw;
+  }
+
+  .row-container { display:flex; align-items:flex-start; gap:1vw; }
+
+  @media (max-width: 1200px) {
+    .placeholder { width:30vw; font-size:1.8vw; }
+    .small-placeholder { width:6vw; font-size:1.2vw; }
+    .search-container { left: 70%; }
+  }
+  @media (max-width: 900px) {
+    .placeholder { width:35vw; font-size:2vw; }
+    .small-placeholder { width:7vw; font-size:1.5vw; }
+    .search-container { left: 65%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="full-bg">
+
+  <!-- Search input only -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Type your answer here">
+  </div>
+
+  <div class="placeholders-container">
+    <div class="column left">
+      <div class="row-container">
+        <div class="placeholder" id="ph1"></div>
+        <div class="small-placeholder" id="ph1s"></div>
+      </div>
+      <div class="row-container">
+        <div class="placeholder" id="ph2"></div>
+        <div class="small-placeholder" id="ph2s"></div>
+      </div>
+      <div class="row-container">
+        <div class="placeholder" id="ph3"></div>
+        <div class="small-placeholder" id="ph3s"></div>
+      </div>
+    </div>
+
+    <div class="column right">
+      <div class="row-container">
+        <div class="placeholder" id="ph4"></div>
+        <div class="small-placeholder" id="ph4s"></div>
+      </div>
+      <div class="row-container">
+        <div class="placeholder" id="ph5"></div>
+        <div class="small-placeholder" id="ph5s"></div>
+      </div>
+      <div class="row-container">
+        <div class="placeholder" id="ph6"></div>
+        <div class="small-placeholder" id="ph6s"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Background music
+  const bgMusic = new Audio("bg-music.mp3");
+  bgMusic.loop = true;
+  bgMusic.volume = 0.3;
+
+  window.addEventListener("load", () => {
+    bgMusic.play().catch(e => {
+      bgMusic.muted = true;
+      bgMusic.play().then(() => {
+        setTimeout(() => { bgMusic.muted = false; }, 1000);
+      });
+    });
+  });
+
+ // Answers + 10 variants each
+const answers = [
+  { 
+    text: "Drink coffee", 
+    revealed:false, 
+    placeholderId:"ph2", 
+    score:45, 
+    variants:[
+      "drink coffee","have coffee","coffee","make coffee","brewing coffee",
+      "morning coffee","sip coffee","grab coffee","hot coffee","cup of coffee"
+    ] 
+  },
+
+  { 
+    text: "Watch TV", 
+    revealed:false, 
+    placeholderId:"ph4", 
+    score:30, 
+    variants:[
+      "watch tv","watch television","tv","watching tv","movie marathon",
+      "watch series","watch shows","netflix","binge watch","watch movies"
+    ] 
+  },
+
+  { 
+    text: "Stay at home", 
+    revealed:false, 
+    placeholderId:"ph1", 
+    score:25, 
+    variants:[
+      "stay at home","stay home","stay indoors","stay inside","home only",
+      "just at home","remain at home","stay in the house","be at home","stuck at home"
+    ] 
+  },
+
+  { 
+    text: "Play games", 
+    revealed:false, 
+    placeholderId:"ph5", 
+    score:18, 
+    variants:[
+      "play games","play game","gaming","video games","online games",
+      "mobile games","console games","pc games","play online","game time"
+    ] 
+  },
+
+  { 
+    text: "Go online", 
+    revealed:false, 
+    placeholderId:"ph6", 
+    score:12, 
+    variants:[
+      "go online","online","surf internet","browse internet","internet surfing",
+      "scroll online","internet","use phone online","browse web","go on social media"
+    ] 
+  },
+
+  { 
+    text: "Read books", 
+    revealed:false, 
+    placeholderId:"ph3", 
+    score:5, 
+    variants:[
+      "read books","reading books","books","read a book","book reading",
+      "read novel","read story","book time","reading time","read literature"
+    ] 
+  }
+];
+
+
+  // Wrong image
+  const wrongImg = document.createElement("img");
+  wrongImg.src = "wrong.png";
+  wrongImg.style.position = "absolute";
+  wrongImg.style.top = "50%";
+  wrongImg.style.left = "50%";
+  wrongImg.style.transform = "translate(-50%, -50%)";
+  wrongImg.style.zIndex = "30";
+  wrongImg.style.display = "none";
+  wrongImg.style.width = "200px";
+  wrongImg.style.height = "200px";
+  document.body.appendChild(wrongImg);
+
+  const wrongSound = new Audio("wrong.mp3");
+  const correctSound = new Audio("correct.mp3");
+
+  function revealAnswer(input) {
+    const userInput = input.value.trim().toLowerCase();
+    let found = false;
+
+    answers.forEach(answer => {
+      if (!answer.revealed && answer.variants.some(v => v === userInput)) {
+        answer.revealed = true;
+        document.getElementById(answer.placeholderId).textContent = answer.text;
+        document.getElementById(answer.placeholderId + "s").textContent = answer.score;
+
+        correctSound.currentTime = 0;
+        correctSound.play();
+        found = true;
+      }
+    });
+
+    if (!found) {
+      wrongImg.style.display = "block";
+      wrongSound.currentTime = 0;
+      wrongSound.play();
+      setTimeout(() => wrongImg.style.display = "none", 1500);
+    }
+
+    input.value = "";
+  }
+
+  // Enter key triggers reveal
+  document.getElementById("searchInput").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      revealAnswer(e.target);
+    }
+  });
+</script>
+
+</body>
+</html>

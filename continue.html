@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTINUE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Full-page background */
+    .full-bg {
+      background-image: url('continue.png'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end; /* push button to bottom */
+      align-items: center;
+      position: relative;
+      flex-direction: column;
+    }
+
+    /* Transparent button placed near bottom */
+    .invisible-btn {
+      width: 400px;   /* bigger button width */
+      height: 150px;  /* bigger button height */
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 50px; /* distance from bottom */
+      z-index: 10;
+    }
+
+    /* Optional: show outline for testing */
+    /*
+    .invisible-btn:hover {
+      outline: 2px dashed red;
+    }
+    */
+  </style>
+</head>
+<body>
+  <div class="full-bg">
+    <button class="invisible-btn" id="playBtn"></button>
+  </div>
+
+  <script>
+    document.getElementById("playBtn").addEventListener("click", () => {
+      window.location.href = "1st-question.html"; // navigate when clicked
+    });
+  </script>
+</body>
+</html>
