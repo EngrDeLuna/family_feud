@@ -9,7 +9,7 @@
   html, body { height:100%; width:100%; font-family:'Arial', sans-serif; }
 
   .full-bg {
-    background-image: url('1stbg.png');
+    background-image: url('12.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@
   top: 25vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2.9vw;
+  font-size: 4vw;
   font-weight: 700;
   color: black;
   text-shadow: 0 0 10px orange;
@@ -152,7 +152,7 @@
   </div>
 
   <!-- NEW QUESTION TEXT -->
-  <h1 class="question-text">KADALASANG DAHILAN NG<br> PAG-ABSENT?</h1>
+  <h1 class="question-text">SENYALES NA MATAGAL NA <br> SA COMPANY</h1>
 
 
   <div class="placeholders-container">
@@ -204,115 +204,119 @@
       });
     });
   });
-
- // Answers + 10 variants each
+// Answers + 10 variants each
 const answers = [
   { 
-    text: "Walang Pera", 
+    text: "Tumanda na sa company", 
     score: 45, 
     variants: [
-      "walang pera",
-      "kapos sa pera",
-      "walang budget",
-      "walang panggastos",
-      "short sa pera",
-      "ubos ang pera",
-      "walang cash",
-      "tipid mode",
-      "walang ipon",
-      "petsa de peligro"
+      "tumanda na sa company",
+      "matagal na sa company",
+      "old timer",
+      "tenured employee",
+      "veteran sa kumpanya",
+      "matagal na empleyado",
+      "halos buhay na sa company",
+      "tagal na nagwowork dito",
+      "since day one",
+      "matagal nang nandito"
     ], 
     revealed: false 
   },
   { 
-    text: "May sakit", 
+    text: "Tigre", 
     score: 30, 
     variants: [
-      "may sakit",
-      "masama pakiramdam",
-      "nilalagnat",
-      "inuubo",
-      "may trangkaso",
-      "masakit ang ulo",
-      "hindi maganda pakiramdam",
-      "may iniinda",
-      "may karamdaman",
-      "nagkakasakit"
+      "tigre",
+      "mataray",
+      "masungit",
+      "strikta",
+      "strikto",
+      "terror",
+      "mahigpit",
+      "masama ang ugali",
+      "mainit ang ulo",
+      "paladesisyon",
+      "palasigaw"
+      
+
     ], 
     revealed: false 
   },
   { 
-    text: "May problema sa pamilya", 
+    text: "Single pa rin", 
     score: 25, 
     variants: [
-      "problema sa pamilya",
-      "may problema sa bahay",
-      "family problem",
-      "away sa pamilya",
-      "may alitan sa pamilya",
-      "problema sa magulang",
-      "problema sa asawa",
-      "problema sa kapatid",
-      "issue sa pamilya",
-      "sagutan",
-      "alitan",
-      "may pinagdadaanan sa pamilya"
+      "single pa rin",
+      "single",
+      "walang jowa",
+      "wala pang jowa",
+      "solo pa rin",
+      "walang lovelife",
+      "nbsb",
+      "goal oriented",
+      "family oriented",
+      "ngsb",
+      "walang karelasyon",
+      "bitter",
+      "single forever"
     ], 
     revealed: false 
   },
   { 
-  text: "May lihim na outing", 
-  score: 20, 
-  variants: [
-    "may lihim na outing",
-    "may secret na gala",
-    "patagong gala",
-    "may tinatagong lakad",
-    "may sikreto na lakad",
-    "hindi alam ng lahat",
-    "tagong outing",
-    "may secret trip",
-    "palihim na gala",
-    "may lakad na patago"
-  ], 
-  revealed: false 
-},
-
+    text: "Alam ang history ng workmate", 
+    score: 20, 
+    variants: [
+      "alam ang history ng workmate",
+      "alam lahat ng chismis",
+      "chismosa",
+      "chismoso",
+      "updated sa lahat",
+      "maraming alam sa opisina",
+      "office marites",
+      "alam ang past ng katrabaho",
+      "maraming kwento",
+      "source ng balita"
+    ], 
+    revealed: false 
+  },
   { 
-    text: "Hang over", 
+    text: "Tumaba na", 
     score: 18, 
     variants: [
-      "hangover",
-      "may hangover",
-      "lasing pa",
-      "galing sa inuman",
-      "sumakit ang ulo sa inom",
-      "pagod sa inom",
-      "nahilo sa alak",
-      "nasobrahan sa inom",
-      "bisyo kagabi",
-      "galing walwal"
+      "tumaba na",
+      "nadagdagan ng timbang",
+      "lumaki ang tiyan",
+      "nag gain ng weight",
+      "nagpataba",
+      "chubby na",
+      "dagdag timbang",
+      "mataba na",
+      "malaki na ang katawan",
+      "nagbago ang katawan"
     ], 
     revealed: false 
   },
   { 
-    text: "May Sideline / Racket", 
+    text: "Maraming rant", 
     score: 14, 
     variants: [
-      "may sideline",
-      "may racket",
-      "sideline",
-      "racket",
-      "may extra trabaho",
-      "may part time",
-      "part time job",
-      "extra income",
-      "may raket",
-      "kumakayod pa"
+      "maraming rant",
+      "maraming sinasabi",
+      "maraming reklamo",
+      "reklamador",
+      "palareklamo",
+      "laging nagrereklamo",
+      "mahilig magrant",
+      "puro reklamo",
+      "negative",
+      "bungangera",
+      "bungangero"
     ], 
     revealed: false 
   },
 ];
+
 
   // Sort answers by score descending and assign placeholders
   const placeholderIds = ["ph1","ph2","ph3","ph4","ph5","ph6"];
@@ -374,7 +378,7 @@ const answers = [
 
    // Next button function
   function goNext() {
-    window.location.href = "2nd-question.html"; // Replace with your next question/page
+    window.location.href = "3rd-question.html"; // Replace with your next question/page
   }
 </script>
 

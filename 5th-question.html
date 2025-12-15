@@ -9,7 +9,7 @@
   html, body { height:100%; width:100%; font-family:'Arial', sans-serif; }
 
   .full-bg {
-    background-image: url('1stbg.png');
+    background-image: url('15.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@
   top: 25vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2.9vw;
+  font-size: 4vw;
   font-weight: 700;
   color: black;
   text-shadow: 0 0 10px orange;
@@ -152,7 +152,7 @@
   </div>
 
   <!-- NEW QUESTION TEXT -->
-  <h1 class="question-text">KADALASANG DAHILAN NG<br> PAG-ABSENT?</h1>
+  <h1 class="question-text">MGA DAHILAN KUNG BAKIT LATE <br> ANG MGA PINOY SA TRABAHO</h1>
 
 
   <div class="placeholders-container">
@@ -205,114 +205,16 @@
     });
   });
 
- // Answers + 10 variants each
-const answers = [
-  { 
-    text: "Walang Pera", 
-    score: 45, 
-    variants: [
-      "walang pera",
-      "kapos sa pera",
-      "walang budget",
-      "walang panggastos",
-      "short sa pera",
-      "ubos ang pera",
-      "walang cash",
-      "tipid mode",
-      "walang ipon",
-      "petsa de peligro"
-    ], 
-    revealed: false 
-  },
-  { 
-    text: "May sakit", 
-    score: 30, 
-    variants: [
-      "may sakit",
-      "masama pakiramdam",
-      "nilalagnat",
-      "inuubo",
-      "may trangkaso",
-      "masakit ang ulo",
-      "hindi maganda pakiramdam",
-      "may iniinda",
-      "may karamdaman",
-      "nagkakasakit"
-    ], 
-    revealed: false 
-  },
-  { 
-    text: "May problema sa pamilya", 
-    score: 25, 
-    variants: [
-      "problema sa pamilya",
-      "may problema sa bahay",
-      "family problem",
-      "away sa pamilya",
-      "may alitan sa pamilya",
-      "problema sa magulang",
-      "problema sa asawa",
-      "problema sa kapatid",
-      "issue sa pamilya",
-      "sagutan",
-      "alitan",
-      "may pinagdadaanan sa pamilya"
-    ], 
-    revealed: false 
-  },
-  { 
-  text: "May lihim na outing", 
-  score: 20, 
-  variants: [
-    "may lihim na outing",
-    "may secret na gala",
-    "patagong gala",
-    "may tinatagong lakad",
-    "may sikreto na lakad",
-    "hindi alam ng lahat",
-    "tagong outing",
-    "may secret trip",
-    "palihim na gala",
-    "may lakad na patago"
-  ], 
-  revealed: false 
-},
-
-  { 
-    text: "Hang over", 
-    score: 18, 
-    variants: [
-      "hangover",
-      "may hangover",
-      "lasing pa",
-      "galing sa inuman",
-      "sumakit ang ulo sa inom",
-      "pagod sa inom",
-      "nahilo sa alak",
-      "nasobrahan sa inom",
-      "bisyo kagabi",
-      "galing walwal"
-    ], 
-    revealed: false 
-  },
-  { 
-    text: "May Sideline / Racket", 
-    score: 14, 
-    variants: [
-      "may sideline",
-      "may racket",
-      "sideline",
-      "racket",
-      "may extra trabaho",
-      "may part time",
-      "part time job",
-      "extra income",
-      "may raket",
-      "kumakayod pa"
-    ], 
-    revealed: false 
-  },
-];
+  // Answers + 10 variants each
+  const answers = [
+    { text: "Drink coffee", score:45, variants:["drink coffee","have coffee","coffee","make coffee","brewing coffee","morning coffee","sip coffee","grab coffee","hot coffee","cup of coffee"], revealed:false },
+    { text: "Watch TV", score:30, variants:["watch tv","watch television","tv","watching tv","movie marathon","watch series","watch shows","netflix","binge watch","watch movies"], revealed:false },
+    { text: "Stay at home", score:25, variants:["stay at home","stay home","stay indoors","stay inside","home only","just at home","remain at home","stay in the house","be at home","stuck at home"], revealed:false },
+    { text: "Play games", score:20, variants:["play games","play game","gaming","video games","online games","mobile games","console games","pc games","play online","game time"], revealed:false },
+    { text: "Go online", score:18, variants:["go online","online","surf internet","browse internet","internet surfing","scroll online","internet","use phone online","browse web","go on social media"], revealed:false },
+    { text: "Read books", score:14, variants:["read books","reading books","books","read a book","book reading","read novel","read story","book time","reading time","read literature"], revealed:false },
+     { text: "Maligo sa baha", score:6, variants:["maligo sa ulan","shower sa alulod","books","read a book","book reading","read novel","read story","book time","reading time","read literature"], revealed:false }
+  ];
 
   // Sort answers by score descending and assign placeholders
   const placeholderIds = ["ph1","ph2","ph3","ph4","ph5","ph6"];
@@ -374,7 +276,7 @@ const answers = [
 
    // Next button function
   function goNext() {
-    window.location.href = "2nd-question.html"; // Replace with your next question/page
+    window.location.href = "6th-question.html"; // Replace with your next question/page
   }
 </script>
 

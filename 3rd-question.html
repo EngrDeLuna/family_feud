@@ -9,7 +9,7 @@
   html, body { height:100%; width:100%; font-family:'Arial', sans-serif; }
 
   .full-bg {
-    background-image: url('1stbg.png');
+    background-image: url('13.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@
   top: 25vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2.9vw;
+  font-size: 4vw;
   font-weight: 700;
   color: black;
   text-shadow: 0 0 10px orange;
@@ -152,7 +152,7 @@
   </div>
 
   <!-- NEW QUESTION TEXT -->
-  <h1 class="question-text">KADALASANG DAHILAN NG<br> PAG-ABSENT?</h1>
+  <h1 class="question-text">DAHIL BAKIT HINDI <br> NAKAPAGTAPOS NG PAG-AARAL</h1>
 
 
   <div class="placeholders-container">
@@ -208,111 +208,110 @@
  // Answers + 10 variants each
 const answers = [
   { 
-    text: "Walang Pera", 
+    text: "Financial", 
     score: 45, 
     variants: [
+      "financial",
+      "problema sa pera",
       "walang pera",
-      "kapos sa pera",
-      "walang budget",
-      "walang panggastos",
-      "short sa pera",
-      "ubos ang pera",
-      "walang cash",
-      "tipid mode",
+      "hirap sa pera",
+      "financial problem",
+      "money issues",
+      "kapos sa budget",
       "walang ipon",
-      "petsa de peligro"
+      "utang",
+      "gastusin"
     ], 
     revealed: false 
   },
   { 
-    text: "May sakit", 
+    text: "Nag-asawa nang maaga", 
     score: 30, 
     variants: [
-      "may sakit",
-      "masama pakiramdam",
-      "nilalagnat",
-      "inuubo",
-      "may trangkaso",
-      "masakit ang ulo",
-      "hindi maganda pakiramdam",
-      "may iniinda",
-      "may karamdaman",
-      "nagkakasakit"
+      "nag asawa nang maaga",
+      "maagang nag asawa",
+      "aga nagpakasal",
+      "maagang nag pamilya",
+      "bata pa nag asawa",
+      "early marriage",
+      "maagang nag settle",
+      "nagpakasal agad",
+      "nag asawa agad",
+      "aga nag asawa"
     ], 
     revealed: false 
   },
   { 
-    text: "May problema sa pamilya", 
+    text: "Breadwinner", 
     score: 25, 
     variants: [
-      "problema sa pamilya",
-      "may problema sa bahay",
-      "family problem",
-      "away sa pamilya",
-      "may alitan sa pamilya",
-      "problema sa magulang",
-      "problema sa asawa",
-      "problema sa kapatid",
-      "issue sa pamilya",
-      "sagutan",
-      "alitan",
-      "may pinagdadaanan sa pamilya"
+      "breadwinner",
+      "sumusuporta sa pamilya",
+      "nagpapaaral ng kapatid",
+      "bumubuhay sa pamilya",
+      "ikaw ang inaasahan",
+      "panganay",
+      "nagtrabaho nang maaga",
+      "may responsibilidad sa pamilya",
+      "tagapagtaguyod ng pamilya",
+      "sandalan ng pamilya"
     ], 
     revealed: false 
   },
   { 
-  text: "May lihim na outing", 
-  score: 20, 
+    text: "Bisyo", 
+    score: 20, 
+    variants: [
+      "bisyo",
+      "bisyo sa alak",
+      "bisyo sa sigarilyo",
+      "bisyo sa sugal",
+      "bisyo sa yosi",
+      "bisyo sa droga",
+      "bisyo sa online games",
+      "bisyo sa inom",
+      "bisyo sa barkada",
+      "bisyo habits"
+    ], 
+    revealed: false 
+  },
+  { 
+    text: "Barkada", 
+    score: 18, 
+    variants: [
+      "barkada",
+      "kaibigan",
+      "tropa",
+      "bisyo ng barkada",
+      "impluwensya ng barkada",
+      "peer pressure",
+      "ka-tropa",
+      "samahan",
+      "group of friends",
+      "bad influence"
+    ], 
+    revealed: false 
+  },
+ { 
+  text: "Malandi", 
+  score: 14, 
   variants: [
-    "may lihim na outing",
-    "may secret na gala",
-    "patagong gala",
-    "may tinatagong lakad",
-    "may sikreto na lakad",
-    "hindi alam ng lahat",
-    "tagong outing",
-    "may secret trip",
-    "palihim na gala",
-    "may lakad na patago"
+    "malandi",
+    "maharot",
+    "maagang humarot",
+    "palandi",
+    "mahilig sa landian",
+    "mahilig makipaglandian",
+    "flirty",
+    "malikot sa lovelife",
+    "habulin ang jowa",
+    "harot nang harot"
   ], 
   revealed: false 
 },
 
-  { 
-    text: "Hang over", 
-    score: 18, 
-    variants: [
-      "hangover",
-      "may hangover",
-      "lasing pa",
-      "galing sa inuman",
-      "sumakit ang ulo sa inom",
-      "pagod sa inom",
-      "nahilo sa alak",
-      "nasobrahan sa inom",
-      "bisyo kagabi",
-      "galing walwal"
-    ], 
-    revealed: false 
-  },
-  { 
-    text: "May Sideline / Racket", 
-    score: 14, 
-    variants: [
-      "may sideline",
-      "may racket",
-      "sideline",
-      "racket",
-      "may extra trabaho",
-      "may part time",
-      "part time job",
-      "extra income",
-      "may raket",
-      "kumakayod pa"
-    ], 
-    revealed: false 
-  },
 ];
+
 
   // Sort answers by score descending and assign placeholders
   const placeholderIds = ["ph1","ph2","ph3","ph4","ph5","ph6"];
@@ -374,7 +373,7 @@ const answers = [
 
    // Next button function
   function goNext() {
-    window.location.href = "2nd-question.html"; // Replace with your next question/page
+    window.location.href = "4th-question.html"; // Replace with your next question/page
   }
 </script>
 

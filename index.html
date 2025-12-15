@@ -81,32 +81,41 @@
     </div>
   </div>
 
-  <!-- Background Music -->
-  <audio id="bgMusic" src="front.mp3" loop autoplay></audio>
+<!-- Background Music -->
+<audio id="bgMusic" src="front.mp3" loop autoplay muted></audio>
 
-  <script>
-    // Ensure music plays on load (autoplay may be blocked on some browsers)
-    const bgMusic = document.getElementById("bgMusic");
-    bgMusic.volume = 0.3; // adjust volume
+<script>
+  const bgMusic = document.getElementById("bgMusic");
+  bgMusic.volume = 0.3; // adjust volume
 
-    window.addEventListener("load", () => {
-      bgMusic.play().catch(() => {
-        console.log("Autoplay blocked, will play after interaction.");
-      });
+  // Try to play music on page load
+  window.addEventListener("load", () => {
+    // Unmute immediately
+    bgMusic.muted = false;
+    bgMusic.play().catch(() => {
+      console.log("Autoplay blocked, will play after user interaction.");
+      // Fallback: play on first user click
+      const playOnClick = () => {
+        bgMusic.play().catch(() => console.log("Music still blocked."));
+        window.removeEventListener("click", playOnClick);
+      };
+      window.addEventListener("click", playOnClick);
     });
+  });
 
-    // Navigation
-    document.getElementById("prevBtn").addEventListener("click", () => {
-      window.location.href = "previous.html";
-    });
+  // Navigation
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    window.location.href = "previous.html";
+  });
 
-    document.getElementById("playBtn").addEventListener("click", () => {
-      window.location.href = "continue.html";
-    });
+  document.getElementById("playBtn").addEventListener("click", () => {
+    window.location.href = "continue.html";
+  });
 
-    document.getElementById("nextBtn").addEventListener("click", () => {
-      window.location.href = "continue.html";
-    });
-  </script>
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    window.location.href = "continue.html";
+  });
+</script>
+
 </body>
 </html>

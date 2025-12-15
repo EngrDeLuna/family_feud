@@ -9,7 +9,7 @@
   html, body { height:100%; width:100%; font-family:'Arial', sans-serif; }
 
   .full-bg {
-    background-image: url('1stbg.png');
+    background-image: url('14.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@
   top: 25vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2.9vw;
+  font-size: 4vw;
   font-weight: 700;
   color: black;
   text-shadow: 0 0 10px orange;
@@ -152,7 +152,7 @@
   </div>
 
   <!-- NEW QUESTION TEXT -->
-  <h1 class="question-text">KADALASANG DAHILAN NG<br> PAG-ABSENT?</h1>
+  <h1 class="question-text">GINAGAWA KADALASAN NG <br>MGA BATA 'PAG UMUULAN</h1>
 
 
   <div class="placeholders-container">
@@ -205,114 +205,113 @@
     });
   });
 
+  // Answers + 10 variants each
  // Answers + 10 variants each
 const answers = [
   { 
-    text: "Walang Pera", 
+    text: "Maligo sa ulan", 
     score: 45, 
     variants: [
-      "walang pera",
-      "kapos sa pera",
-      "walang budget",
-      "walang panggastos",
-      "short sa pera",
-      "ubos ang pera",
-      "walang cash",
-      "tipid mode",
-      "walang ipon",
-      "petsa de peligro"
+      "maligo sa ulan",
+      "maglaro sa ulan",
+      "umulan swimming",
+      "magbabad sa ulan",
+      "tumakbo sa ulan",
+      "basang-basa sa ulan",
+      "magpakasaya sa ulan",
+      "tumalon sa puddle",
+      "maglaro ng tubig sa ulan",
+      "umulan fun"
     ], 
     revealed: false 
   },
   { 
-    text: "May sakit", 
+    text: "Manood ng TV", 
     score: 30, 
     variants: [
-      "may sakit",
-      "masama pakiramdam",
-      "nilalagnat",
-      "inuubo",
-      "may trangkaso",
-      "masakit ang ulo",
-      "hindi maganda pakiramdam",
-      "may iniinda",
-      "may karamdaman",
-      "nagkakasakit"
+      "manood ng tv",
+      "watch tv",
+      "manood ng cartoons",
+      "manood ng pelikula",
+      "tv time",
+      "movie marathon",
+      "cartoon time",
+      "watch shows",
+      "watch series",
+      "mag TV"
     ], 
     revealed: false 
   },
   { 
-    text: "May problema sa pamilya", 
+    text: "Manatili sa bahay", 
     score: 25, 
     variants: [
-      "problema sa pamilya",
-      "may problema sa bahay",
-      "family problem",
-      "away sa pamilya",
-      "may alitan sa pamilya",
-      "problema sa magulang",
-      "problema sa asawa",
-      "problema sa kapatid",
-      "issue sa pamilya",
-      "sagutan",
-      "alitan",
-      "may pinagdadaanan sa pamilya"
+      "stay at home",
+      "manatili sa bahay",
+      "stay indoors",
+      "stay inside",
+      "hindi lumabas",
+      "home only",
+      "stay in the house",
+      "magpahinga sa bahay",
+      "hindi lumabas sa ulan",
+      "magpalipas oras sa bahay"
     ], 
     revealed: false 
   },
   { 
-  text: "May lihim na outing", 
-  score: 20, 
-  variants: [
-    "may lihim na outing",
-    "may secret na gala",
-    "patagong gala",
-    "may tinatagong lakad",
-    "may sikreto na lakad",
-    "hindi alam ng lahat",
-    "tagong outing",
-    "may secret trip",
-    "palihim na gala",
-    "may lakad na patago"
-  ], 
-  revealed: false 
-},
-
+    text: "Maglaro ng games", 
+    score: 20, 
+    variants: [
+      "maglaro ng games",
+      "play games",
+      "video games",
+      "online games",
+      "mobile games",
+      "console games",
+      "pc games",
+      "game time",
+      "mag gaming",
+      "maglaro sa computer"
+    ], 
+    revealed: false 
+  },
   { 
-    text: "Hang over", 
+    text: "Mag-online o mag-surf sa internet", 
     score: 18, 
     variants: [
-      "hangover",
-      "may hangover",
-      "lasing pa",
-      "galing sa inuman",
-      "sumakit ang ulo sa inom",
-      "pagod sa inom",
-      "nahilo sa alak",
-      "nasobrahan sa inom",
-      "bisyo kagabi",
-      "galing walwal"
+      "go online",
+      "surf internet",
+      "browse internet",
+      "internet surfing",
+      "scroll online",
+      "mag-internet",
+      "mag-social media",
+      "use phone online",
+      "browse web",
+      "maglaro online"
     ], 
     revealed: false 
   },
   { 
-    text: "May Sideline / Racket", 
+    text: "Magbasa ng libro", 
     score: 14, 
     variants: [
-      "may sideline",
-      "may racket",
-      "sideline",
-      "racket",
-      "may extra trabaho",
-      "may part time",
-      "part time job",
-      "extra income",
-      "may raket",
-      "kumakayod pa"
+      "magbasa ng libro",
+      "read books",
+      "reading books",
+      "read a book",
+      "book reading",
+      "read story",
+      "read novel",
+      "book time",
+      "reading time",
+      "mag-aral o magbasa"
     ], 
     revealed: false 
   },
 ];
+
 
   // Sort answers by score descending and assign placeholders
   const placeholderIds = ["ph1","ph2","ph3","ph4","ph5","ph6"];
@@ -374,7 +373,7 @@ const answers = [
 
    // Next button function
   function goNext() {
-    window.location.href = "2nd-question.html"; // Replace with your next question/page
+    window.location.href = "5th-question.html"; // Replace with your next question/page
   }
 </script>
 

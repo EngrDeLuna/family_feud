@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Feud</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Full-page background */
+    .full-bg {
+      background-image: url('thankyou.png'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end; /* push button to bottom */
+      align-items: center;
+      position: relative;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div class="full-bg">
+    <button class="invisible-btn" id="playBtn"></button>
+  </div>
+</body>
+</html>
